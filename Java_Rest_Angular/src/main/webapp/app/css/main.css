@@ -1,0 +1,66 @@
+.modal {
+    display: block;
+}
+/* Custom dialog/modal headers */
+
+.dialog-header-error {
+    background-color: #d2322d;
+}
+.dialog-header-wait {
+    background-color: #428bca;
+}
+.dialog-header-notify {
+    background-color: #eeeeee;
+}
+.dialog-header-confirm {
+    background-color: #333333;
+}
+.dialog-header-error span,
+.dialog-header-error h4,
+.dialog-header-wait span,
+.dialog-header-wait h4,
+.dialog-header-confirm span,
+.dialog-header-confirm h4 {
+    color: #ffffff;
+}
+/* Ease Display */
+
+.pad {
+    padding: 25px;
+}
+.spreadsheet {
+    height: 250px;
+    border: 1px solid #ddd;
+}
+#loginbox {
+    margin-top: 50px;
+}
+.forgot-password {
+    float: right;
+    font-size: 80%;
+    position: relative;
+    top: -10px;
+}
+#login-alert, #signup-alert {
+    display: none;
+}
+.login-field {
+    margin-bottom: 25px
+}
+.login-button-section {
+    margin-top: 10px;
+}
+#signupbox {
+    margin-top: 50px
+}
+.signin-label {
+    float: right;
+    font-size: 85%;
+    position: relative;
+    top: -10px;
+}
+.signup-label {
+    border-top: 1px solid#888;
+    padding-top: 15px;
+    font-size: 85%
+}

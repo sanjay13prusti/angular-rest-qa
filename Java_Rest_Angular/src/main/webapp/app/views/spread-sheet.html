@@ -1,0 +1,120 @@
+<!doctype html>
+<html ng-app="qaApp">
+
+<head>
+    <!-- Jquery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
+
+    <!-- Angular JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.2/angular-resource.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+
+    <!-- Wijmospread JS -->
+    <script src="http://cdn.wijmo.com/spreadjs/jquery.wijmo.wijspread.all.1.20133.8.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../ngdemo/js/script/angular.wijmo.wijspread.1.20133.8.min.js"></script>
+
+    <!-- Angular module dialog JS  -->
+    <script src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
+
+    <script src="../ngdemo/js/controller/qacontroller.js"></script>
+    <script src="../ngdemo/js/service/services.js"></script>
+
+    <!-- Bootstrap, wijmo and custom css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.wijmo.com/themes/sterling/jquery-wijmo.css" rel="stylesheet" title="metro-jqueryui" type="text/css" />
+    <link rel="stylesheet" href="../ngdemo/css/main.css">
+</head>
+
+<body ng-controller="QAController">
+    <!-- navigation menu bar -->
+    <nav id="myNavbar" class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+
+                    <li class="active" id="viewSpreadSheet"><a href="#" ng-click="getSheet()">View</a>
+                    </li>
+                    <li ng-click="launch()"><a href="#">Create</a>
+                    </li>
+                    <!--</ul>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+        </div>
+
+    </nav>
+    <div class="container">
+        <h1>QA Script Automation</h1>
+        <hr />
+        <form>
+            <!-- view sprad sheet  -->
+            <div id="viewSheetDiv" ng-show="sheetname == 'vsheet'">
+                <wij-spread id="viewSpreadId" usewijmotheme="true" tabstripvisible="false" newtabvisible="false" showhorizontalscrollbar="false" showverticalscrollbar="false" class="spreadsheet">
+                    <sheets>
+                        <sheet datasource="viewsheet" name="view" rowcount="10">
+                            <columns>
+                                <column datafield="_id" width="150" visible="false"></column>
+                                <column datafield="Test Case ID" width="100"></column>
+                                <column datafield="Test Step" width="300"></column>
+                                <column datafield="Request URL" width="200"></column>
+                                <column datafield="Type" width="150"></column>
+                                <column datafield="Expected Assertion" width="150"></column>
+                                <column datafield="Expected Value" width="100"></column>
+                                <column datafield="Status" width="100"></column>
+                            </columns>
+                        </sheet>
+                    </sheets>
+                </wij-spread>
+            </div>
+
+            <!-- create spread sheet -->
+            <div id="createSheetDiv" class="spreadsheet" ng-show="sheetname == 'csheet'">
+                <!-- <wij-spread id="createSpreadId" usewijmotheme="true"
+					tabstripvisible="false" newtabvisible="false"
+					showhorizontalscrollbar="false" showverticalscrollbar="false"
+					class="spreadsheet"> <sheets> <sheet
+					datasource="createsheet" name="create"> <columns>
+				<column datafield="_id" width="150" visible="false"></column> <column
+					datafield="Test Case ID" width="100"></column> <column
+					datafield="Test Step" width="300"></column> <column
+					datafield="Request URL" width="200"></column> <column
+					datafield="Type" width="150"></column> <column
+					datafield="Expected Assertion" width="150"></column> <column
+					datafield="Expected Value" width="100"></column> <column
+					datafield="Status" width="100"></column> </columns> </sheet></sheets></wij-spread> -->
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <input id="saveButton" type="submit" class="btn btn-primary" ng-click="saveEditedScript()" value="Save" ng-show="sebutton">
+                    <input id="saveButton" type="submit" class="btn btn-primary" ng-click="saveScript()" value="Save" ng-show="ssbutton">
+                    <button class="btn btn-primary update" ng-click="updateRow('add')" ng-show="ssbutton">Add Row</button>
+                    <button class="btn btn-primary update" ng-click="updateRow('delete')" ng-show="ssbutton">Delete Row</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
